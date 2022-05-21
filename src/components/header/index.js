@@ -19,7 +19,7 @@ const Header = (props) => {
         <Navbar bg="primary" variant="dark" expand="lg">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">
-                    Navbar scroll
+                    MinPro
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -31,8 +31,8 @@ const Header = (props) => {
                         <Nav.Link as={Link} to="/login">
                             Login
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/content">
-                            Content
+                        <Nav.Link as={Link} to="/dashboard-admin">
+                            Dashboard Admin
                         </Nav.Link>
                         <NavDropdown title="Link" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3">

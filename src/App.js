@@ -1,11 +1,11 @@
 import React, { useState, useEffect, createContext } from "react";
-import './styles/index.scss'
+import "./styles/index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/header";
-import Content from "./pages/content";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/home";
+import DashboardAdmin from "./pages/dashboard-admin";
 
 export const ValueContext = createContext();
 
@@ -28,7 +28,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/content" element={<Content />} />
+                    <Route path="/dashboard-admin" element={<DashboardAdmin />} />
                 </Routes>
             </ValueContext.Provider>
         </>

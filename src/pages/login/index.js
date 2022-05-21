@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import style from "../../styles/Button.module.css";
 import { Form } from "react-bootstrap";
+import axios from "axios";
 
 const Login = () => {
     const nameInput = useRef(null);
@@ -8,9 +9,41 @@ const Login = () => {
         name: "",
         password: "",
     });
-    const submitName = () => {
+
+    const addProduct = () => {
+        axios
+            .post(
+                "http://localhost:8000/products",
+                {
+                    name: "Kabel",
+                    price: 1500,
+                    quantity: 129,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                }
+            )
+            .then((response) => console.log(response));
+    };
+
+    const submitRegister = () => {};
+
+    const submitLogin = () => {
         // console.log(nameInput.current.value);
-        console.log(formInputLogin, "submit");
+        axios
+            .post("http://localhost:8000/auth/login", {
+                name: formInputLogin.name,
+                password: formInputLogin.password,
+            })
+            .then((response) =>
+                localStorage.setItem("token", response.data.access_token)
+            );
+
+        addProduct();
     };
 
     const onChangeName = (event) => {
@@ -58,7 +91,7 @@ const Login = () => {
                         style={{ width: "80%" }}
                     />
                     <br />
-                    <button className={style.btn} onClick={submitName}>
+                    <button className={style.btn} onClick={submitLogin}>
                         Submit
                     </button>
                 </div>
@@ -103,7 +136,7 @@ const Login = () => {
                         />
                     </label>
                     <br />
-                    <button className={style.btn} onClick={submitName}>
+                    <button className={style.btn} onClick={submitRegister}>
                         Submit
                     </button>
                 </div>
